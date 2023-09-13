@@ -1,6 +1,7 @@
 const express = require("express")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
+const mainRouter = require("./routes/index.js")
 
 const server = express()
 
@@ -14,5 +15,6 @@ server.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+server.use(mainRouter)
 
 module.exports = server
