@@ -2,10 +2,10 @@ const {getApiData} = require("../controller/controllerWheather.js")
 
 
 const getWeatherByName = async (req, res) => {
-    const {name} = req.query
+    const {lat, long} = req.query
     try{
-        const response = await getApiData(name)
-        console.log(response)
+        const response = await getApiData(lat,long)
+        // console.log(response)
         return res.status(200).json(response)
 
     }catch(error){
