@@ -2,6 +2,7 @@ import React from "react";
 import style from "./CurrentDay.module.css";
 
 function CurrentDay() {
+
    return (
       <>
          <div className={style.image_container}>IMG</div>
