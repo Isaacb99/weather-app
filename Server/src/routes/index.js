@@ -1,11 +1,12 @@
 const {Router} = require("express")
-const { getWeatherByName, getWeatherByForecast} = require("../handler/handlerWeather")
+const { getWeatherByLocation, getWeatherByForecast, getWeatherByName} = require("../handler/handlerWeather")
 
 const mainRouter = Router()
 
 //aca hay que crear las rutas a usar
 mainRouter
-        .get("/", getWeatherByName)
-        .get("/forecast", getWeatherByForecast)
+        .get("/", getWeatherByLocation) //busca clima del lugar actual
+        .get("/forecast", getWeatherByForecast) //busca clima de los proximos dias
+        .get("/name", getWeatherByName) //busca clima por nombre del lugar
 
 module.exports = mainRouter

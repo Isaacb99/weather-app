@@ -11,8 +11,15 @@ const getApiData = async(lat, long) =>{
     return response
 }
 
-const getWeatherForecast = async(name, days) =>{
-    const response = (await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${name}&days=${days}&aqi=no&alerts=no`)).data
+const getWeatherForecast = async(lat, long, days) =>{
+    const response = (await axios.get(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${long}&days=${days}&aqi=no&alerts=no`)).data
+
+    if(!response) throw new Error("Country or State not found!")
+    return response
+}
+
+const getWeather = async(name) =>{
+    const response = (await axios.get(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${name}`)).data
 
     if(!response) throw new Error("Country or State not found!")
     return response
@@ -20,5 +27,6 @@ const getWeatherForecast = async(name, days) =>{
 
 module.exports = {
     getApiData,
-    getWeatherForecast   
+    getWeatherForecast,
+    getWeather
 }
